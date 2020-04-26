@@ -25,8 +25,21 @@ home:
       logged: Vous êtes connecté en tant que
       logout: Déconnexion
   reset:
+    title: Réinitialisation du mot de passe
     description: |
       Entrez votre adresse e-mail et nous vous enverrons un
       lien pour réinitialiser votre mot de passe.
   password_reset: Réinitialiser le mot de passe
+  email:
+    reset_send: Password Reset Email Sent
+    expire_email: Un e-mail a été envoyé contenant un lien sur lequel vous pouvez cliquer pour réinitialiser votre mot de passe. <br /> <br />  Ce lien expirera dans
+    expire_hours_email: hour(s)
+    check_spam: Si vous ne recevez pas d'e-mail, veuillez vérifier votre dossier spam ou
+    try: réessayer
+    visit: Pour réinitialiser votre mot de passe, veuillez visiter
+    link_expire: Ce lien expirera dans 2 heures
+    here: ici
+  greeting:
+    hi: Bonjour
+    cheers: Cordialement
 

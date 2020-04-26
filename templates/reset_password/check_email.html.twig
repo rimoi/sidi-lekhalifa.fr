@@ -1,8 +1,12 @@
-{% extends 'base.html.twig' %}
+{% extends 'connection/login.html.twig' %}
 
-{% block title %}Password Reset Email Sent{% endblock %}
-
-{% block body %}
-    <p>An email has been sent that contains a link that you can click to reset your password. This link will expire in {{ tokenLifetime|date('g') }} hour(s).</p>
-    <p>If you don't receive an email please check your spam folder or <a href="{{ path('app_forgot_password_request') }}">try again</a>.</p>
+{% block title %}{{ 'home.password_reset'|trans }}{% endblock %}
+{% block _show_message '' %}
+{% block _create_or_ligin %}
+    <div class="tab-content">
+        <div role="tabpanel" class="text-justify tab-pane fade in active" id="sign_up">
+            <p>{{ 'home.email.expire_email'|trans|raw }} {{ tokenLifetime|date('g') }} {{ 'home.email.expire_hours_email'|trans }}.</p>
+            <p>{{ 'home.email.check_spam'|trans }} <a href="{{ path('app_forgot_password_request') }}">{{ 'home.email.try'|trans }}</a>.</p>
+        </div>
+    </div>
 {% endblock %}

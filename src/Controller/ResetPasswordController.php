@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\ChangePasswordFormType;
 use App\Form\ResetPasswordRequestFormType;
+use App\Security\Login;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -27,10 +28,14 @@ class ResetPasswordController extends AbstractController
     use ResetPasswordControllerTrait;
 
     private $resetPasswordHelper;
+    private $translator;
+    private $login;
 
-    public function __construct(ResetPasswordHelperInterface $resetPasswordHelper)
+    public function __construct(ResetPasswordHelperInterface $resetPasswordHelper, TranslatorInterface $translator, Login $login)
     {
         $this->resetPasswordHelper = $resetPasswordHelper;
+        $this->translator = $translator;
+        $this->login = $login;
     }
 
     /**
@@ -121,7 +126,9 @@ class ResetPasswordController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
 
             // The session is cleaned up after the password has been changed.
-            $this->cleanSessionAfterReset();
+           // $this->cleanSessionAfterReset();
+
+            $this->login->forceConnection($request, $user);
 
             return $this->redirectToRoute('home');
         }
@@ -131,7 +138,7 @@ class ResetPasswordController extends AbstractController
         ]);
     }
 
-    private function processSendingPasswordResetEmail(string $emailFormData, MailerInterface $mailer, TranslatorInterface $translator): RedirectResponse
+    private function processSendingPasswordResetEmail(string $emailFormData, MailerInterface $mailer): RedirectResponse
     {
         $user = $this->getDoctrine()->getRepository(User::class)->findOneBy([
             'email' => $emailFormData,
@@ -157,7 +164,7 @@ class ResetPasswordController extends AbstractController
         }
 
         $email = (new TemplatedEmail())
-            ->from(new Address('sidilekhalifa1@gmail.com', $translator->trans('home.password_reset')))
+            ->from(new Address('sidilekhalifa1@gmail.com', $this->translator->trans('home.password_reset')))
             ->to($user->getEmail())
             ->subject('Your password reset request')
             ->htmlTemplate('reset_password/email.html.twig')

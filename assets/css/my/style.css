@@ -6,3 +6,11 @@
    /*  color : #ce3232;*/
     color : #353131;
 }
+label[for='change_password_form_plainPassword_first'],
+label[for='change_password_form_plainPassword_second'] {
+    color: #fff;
+}
+form[name="change_password_form"] div ul > li {
+    list-style: none;
+    color: red;
+}
