@@ -1,0 +1,32 @@
+home:
+  nav:
+    home: Accueil
+    about: Qui sommes-nous
+    blog: Blog
+    us-work: Réalisations
+    contact: Contact
+  text:
+    welcome: Bienvenue !
+  action:
+    send: Soumettre
+  connection:
+    login: Se connecter
+    join: S'inscrire
+    signup:
+      type: Création de compte
+      name: Nom
+      prenom: Prénom
+      pseudo: Pseudo
+      email: Email
+      telephone: Téléphone
+      password: Mot de passe
+      confirm-password: Confirmation mot de passe
+      forgot-password: Mot de passe oublié
+      logged: Vous êtes connecté en tant que
+      logout: Déconnexion
+  reset:
+    description: |
+      Entrez votre adresse e-mail et nous vous enverrons un
+      lien pour réinitialiser votre mot de passe.
+  password_reset: Réinitialiser le mot de passe
+

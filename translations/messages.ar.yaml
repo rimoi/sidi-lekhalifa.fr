@@ -1,1 +1,32 @@
-Symfony is great: J'aime Symfony
+home:
+  nav:
+    home: الرئيسية
+    about: من نحن
+    blog: تدوينات
+    us-work: إنجزات
+    contact: اتصل بنا
+  text:
+    welcome: مرحبا
+  action:
+    send: إرسال
+  connection:
+    login: تسجيل الدخول
+    join: الإنضمام
+    signup:
+      type: إنشاء حساب
+      name: إسم العائلي
+      prenom: الإ سم
+      pseudo: لقب
+      email: البريد الإلكتروني
+      telephone: إرسال الهاتف
+      password: كلمة السر
+      confirm-password: تأكيد كلمة السر
+      forgot-password: نسيت كلمة المرور
+      logged: لقد قمت بتسجيل الدخول باسم
+      logout: تسجيل الخروج
+  reset:
+    title: إعادة ضبط كلمة سر
+    description: |
+      أدخل عنوان بريدك الإلكتروني وسنرسل لك
+      رابط لإعادة تعيين كلمة المرور الخاصة بك.
+  password_reset: إعادة ضبط كلمة سر
