@@ -1,0 +1,8 @@
+.js-dropdown ul.dropdown-menu li:hover {
+    background-color : #d5cdcd;
+}
+
+.js-dropdown ul.dropdown-menu li a {
+   /*  color : #ce3232;*/
+    color : #353131;
+}

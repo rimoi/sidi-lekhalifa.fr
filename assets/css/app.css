@@ -1,3 +1,6 @@
-body {
-    background-color: lightgray;
-}
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "ext/font-awesome.min.css";
+@import "ext/magnific-popup.css";
+@import "ext/templatemo-style.css";
+@import "./ext/flashy.css";
+@import "./my/style.css";

@@ -2,10 +2,6 @@ var Encore = require('@symfony/webpack-encore');
 
 // Manually configure the runtime environment if not already configured yet by the "encore" command.
 // It's useful when you use tools that rely on webpack.config.js file.
-if (!Encore.isRuntimeEnvironmentConfigured()) {
-    Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev');
-}
-
 Encore
     // directory where compiled assets will be stored
     .setOutputPath('public/build/')
@@ -53,22 +49,41 @@ Encore
         config.corejs = 3;
     })
 
-    // enables Sass/SCSS support
-    //.enableSassLoader()
+    .copyFiles({
+        from: './assets/images',
+        to: 'images/[path][name].[hash:8].[ext]',
+        pattern:  /\.(png|jpg|jpeg)$/
+    }, {
+        from: './assets/fonts',
+        to: 'fonts',
+        pattern: /\.(otf|eot|svg|ttf|woff|woff2)$/
+    })
 
-    // uncomment if you use TypeScript
-    //.enableTypeScriptLoader()
+// enables Sass/SCSS support
+//.enableSassLoader()
 
-    // uncomment to get integrity="..." attributes on your script & link tags
-    // requires WebpackEncoreBundle 1.4 or higher
-    //.enableIntegrityHashes(Encore.isProduction())
+// uncomment if you use TypeScript
+//.enableTypeScriptLoader()
 
-    // uncomment if you're having problems with a jQuery plugin
-    //.autoProvidejQuery()
+// uncomment to get integrity="..." attributes on your script & link tags
+// requires WebpackEncoreBundle 1.4 or higher
+//.enableIntegrityHashes(Encore.isProduction())
 
-    // uncomment if you use API Platform Admin (composer req api-admin)
-    //.enableReactPreset()
-    //.addEntry('admin', './assets/js/admin.js')
+// uncomment if you're having problems with a jQuery plugin
+    .autoProvidejQuery()
+    .autoProvideVariables({
+        $: 'jquery',
+        jQuery: 'jquery',
+        'window.jQuery': 'jquery',
+    })
+
+// uncomment if you use API Platform Admin (composer req api-admin)
+//.enableReactPreset()
+//.addEntry('admin', './assets/js/admin.js')
 ;
+if (!Encore.isRuntimeEnvironmentConfigured()) {
+    Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev');
+
+}
 
 module.exports = Encore.getWebpackConfig();

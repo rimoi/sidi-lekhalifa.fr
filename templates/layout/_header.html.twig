@@ -1,0 +1,54 @@
+<section class="navbar custom-navbar navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <div class="navbar-header">
+            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon icon-bar"></span>
+                <span class="icon icon-bar"></span>
+                <span class="icon icon-bar"></span>
+            </button>
+
+            <!-- lOGO TEXT HERE -->
+            <a href="{{ path('home') }}" class="navbar-brand">Sidi</a>
+        </div>
+
+        <!-- MENU LINKS -->
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-nav-first" {% if app.request.locale == 'ar' %} style="display: flex; flex-direction: row-reverse"{% endif %}>
+                <li><a href="{{ path('home') }}" class="smoothScroll">{{ 'home.nav.home'|trans }}</a></li>
+                <li><a href="{{ path('about') }}" class="smoothScroll">{{ 'home.nav.about'|trans }}</a></li>
+                <li><a href="{{ path('blog') }}" class="smoothScroll">{{ 'home.nav.blog'|trans }}</a></li>
+                <li><a href="{{ path('who_are_we') }}" class="smoothScroll">{{ 'home.nav.us-work'|trans }}</a></li>
+                <li><a href="{{ path('contact') }}" class="smoothScroll">{{ 'home.nav.contact'|trans }}</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                <li {% if not app.user %}class="section-btn" {% else %} style="margin-top: 7px" }}{% endif %}>
+                    {% if app.user %}
+                        <div class="dropdown js-dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                {{ app.user.nickname }}
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    <li><a href="#">Administration</a></li>
+                                    <li role="separator" class="divider"></li>
+                                {% endif %}
+                                <li><a href="{{ path('app_logout') }}">{{ 'home.connection.signup.logout'|trans }}</a></li>
+                            </ul>
+                        </div>
+                    {% else %}
+                        <a href="{{ path('connection') }}">
+                            {{ 'home.connection.login'|trans }} / {{ 'home.connection.join'|trans }}
+                        </a>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
