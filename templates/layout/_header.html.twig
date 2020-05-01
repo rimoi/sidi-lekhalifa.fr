@@ -23,10 +23,19 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                <li {% if not app.user %}class="section-btn" {% else %} style="margin-top: 7px" }}{% endif %}>
+                <div class="btn-group" id="status" data-toggle="buttons" style="margin: 7px 10px">
+                    <div class="dropdown js-dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{ app.request.locale == 'fr' ? 'Français' : 'Arabe' }}
+                            <span class="caret"></span></button>
+                        <ul class="dropdown-menu js-language">
+                            <li><a href="{{ path('home', {'_locale': (app.request.locale != 'fr' ? 'fr' : 'ar')}) }}">{{ app.request.locale != 'fr' ? 'Français' : 'Arabe' }}</a></li>
+                        </ul>
+                    </div>
+                </div>
+{#                <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>#}
+{#                <li><a href="#"><i class="fa fa-twitter"></i></a></li>#}
+{#                <li><a href="#"><i class="fa fa-instagram"></i></a></li>#}
+                <li id="is_connected" {% if not app.user %}class="section-btn" {% else %} style="margin-top: 7px" {% endif %}>
                     {% if app.user %}
                         <div class="dropdown js-dropdown">
                             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">

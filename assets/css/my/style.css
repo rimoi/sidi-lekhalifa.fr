@@ -14,3 +14,15 @@ form[name="change_password_form"] div ul > li {
     list-style: none;
     color: red;
 }
+
+
+@media (max-width: 767px) {
+    .navbar-nav .open .dropdown-menu {
+        text-align: center;
+
+    }
+    #status, #is_connected {
+        display: block;
+        margin: 7px 10px;
+    }
+}
