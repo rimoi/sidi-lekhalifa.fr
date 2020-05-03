@@ -220,7 +220,7 @@ http://www.templatemo.com/tm-509-hydro
   }
 
   .custom-navbar .navbar-nav.navbar-nav-first {
-    margin-left: 8em;
+    margin-left: 3em;
   }
 
   .custom-navbar .navbar-nav.navbar-right li a {
@@ -886,6 +886,9 @@ http://www.templatemo.com/tm-509-hydro
     margin-top: 20px;
   }
 
+.forget-password:hover {
+  text-decoration: underline;
+}
 
   /*---------------------------------------
      RESPONSIVE STYLES              

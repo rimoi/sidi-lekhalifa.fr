@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TagRepository")
@@ -24,6 +25,12 @@ class Tag
     private $name;
 
     /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $archived=false;
+
+    /**
+     * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")
      */
     private $created_at;
@@ -36,6 +43,11 @@ class Tag
     public function __construct()
     {
         $this->article = new ArrayCollection();
+    }
+
+    public function __toString(): string
+    {
+        return $this->name;
     }
 
     public function getId(): ?int
@@ -51,6 +63,18 @@ class Tag
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getArchived(): ?bool
+    {
+        return $this->archived;
+    }
+
+    public function setArchived(?bool $archived): self
+    {
+        $this->archived = $archived;
 
         return $this;
     }
@@ -79,6 +103,7 @@ class Tag
     {
         if (!$this->article->contains($article)) {
             $this->article[] = $article;
+            $article->addTag($this);
         }
 
         return $this;
@@ -88,8 +113,10 @@ class Tag
     {
         if ($this->article->contains($article)) {
             $this->article->removeElement($article);
+            $article->removeTag($this);
         }
 
         return $this;
     }
+
 }

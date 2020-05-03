@@ -1,4 +1,5 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
+@import '~select2/dist/css/select2.min.css';
 @import "ext/font-awesome.min.css";
 @import "ext/magnific-popup.css";
 @import "ext/templatemo-style.css";

@@ -1,0 +1,18 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Edit Tag{% endblock %}
+
+{% block body_content %}
+    <h1>Edit Tag</h1>
+
+    {{ include('tag/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <div class="admin-show">
+        <div>
+            {{ include('tag/_delete_form.html.twig') }}
+        </div>
+        <div>
+            <a class="btn btn-default" href="{{ path('tag_index') }}">< back to list</a>
+        </div>
+    </div>
+{% endblock %}

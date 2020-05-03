@@ -1,8 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}{{ 'home.connection.login'|trans }}{% endblock %}
- {% block header '' %}
- {% block footer '' %}
+{% block header '' %}
+{% block footer '' %}
 
 {% block body %}
     <section class="modal fade center" id="modal-connect-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -55,8 +55,8 @@
                                                            value="{{ csrf_token('authenticate') }}"
                                                     >
                                                     <input type="submit" class="form-control" name="submit" value="{{ 'home.action.send'|trans }}">
-                                                    <a href="{{ path('app_forgot_password_request') }}">{{ 'home.connection.signup.forgot-password'|trans }}</a>
                                                 </form>
+                                                <a class="forget-password" href="{{ path('app_forgot_password_request') }}">{{ 'home.connection.signup.forgot-password'|trans }}</a>
                                             </div>
                                             <div role="tabpanel" class="tab-pane fade in {{ registration ? 'active' }}" id="sign_up">
                                                     {{ form_start(registrationForm, {'action': path('app_register'), 'method': 'POST'}) }}
@@ -83,6 +83,9 @@
 
                                                         <input type="submit" class="form-control" name="submit" value="{{ 'home.action.send'|trans }}">
                                                     {{ form_end(registrationForm) }}
+                                            </div>
+                                            <div>
+                                                <a class="btn btn-primary" href="{{ path('home') }}" style="margin-top: 25px">< &nbsp;&nbsp;{{ 'home.back_home'|trans }}</a>
                                             </div>
                                         </div>
                                     {% endif %}

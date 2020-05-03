@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -55,6 +56,7 @@ class User implements UserInterface, \Serializable
     private $phone;
 
     /**
+     * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")
      */
     private $created_at;
@@ -111,16 +113,9 @@ class User implements UserInterface, \Serializable
         return (string) $this->email;
     }
 
-    /**
-     * @see UserInterface
-     */
-    public function getRoles(): array
+    public function getRoles(): ?array
     {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
-
-        return array_unique($roles);
+        return $this->roles;
     }
 
     public function setRoles(array $roles): self
@@ -130,12 +125,9 @@ class User implements UserInterface, \Serializable
         return $this;
     }
 
-    /**
-     * @see UserInterface
-     */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
-        return (string) $this->password;
+        return $this->password;
     }
 
     public function setPassword(string $password): self
@@ -167,7 +159,7 @@ class User implements UserInterface, \Serializable
         return $this->firstName;
     }
 
-    public function setFirstName(string $firstName): self
+    public function setFirstName(?string $firstName): self
     {
         $this->firstName = $firstName;
 
@@ -179,7 +171,7 @@ class User implements UserInterface, \Serializable
         return $this->lastName;
     }
 
-    public function setLastName(string $lastName): self
+    public function setLastName(?string $lastName): self
     {
         $this->lastName = $lastName;
 
@@ -215,8 +207,7 @@ class User implements UserInterface, \Serializable
         return serialize([
             $this->id,
             $this->email,
-            $this->firstName,
-            $this->lastName,
+            $this->pseudo,
             $this->password,
         ]);
     }
@@ -226,8 +217,7 @@ class User implements UserInterface, \Serializable
         list(
             $this->id,
             $this->email,
-            $this->firstName,
-            $this->lastName,
+            $this->pseudo,
             $this->password,
             ) = unserialize($serialized, ['allowed_classes' => false]);
     }

@@ -4,7 +4,9 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
@@ -25,19 +27,21 @@ class Article
     private $title;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    private $archived;
+
+    /**
      * @ORM\Column(type="datetime")
+     * @Gedmo\Timestampable(on="create")
      */
     private $created_at;
 
     /**
+     * @Gedmo\Timestampable(on="update")
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $update_at;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $image;
 
     /**
      * @ORM\Column(type="text")
@@ -45,9 +49,13 @@ class Article
     private $content;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @Gedmo\Slug(fields={"title"})
+     * @ORM\Column(length=128, unique=true)
      */
     private $slug;
+
+    /** @ORM\OneToOne(targetEntity="Image", cascade={"persist", "remove"}) */
+    private $image;
 
     /** @ORM\ManyToMany(targetEntity="App\Entity\Tag", inversedBy="article", cascade={"persist"}) */
     private $tags;
@@ -56,6 +64,11 @@ class Article
      * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="article", cascade={"persist", "remove"})
      */
     private $comments;
+
+    public function __toString(): string
+    {
+        return $this->title;
+    }
 
     public function __construct()
     {
@@ -92,24 +105,31 @@ class Article
         return $this;
     }
 
+    public function getArchived(): ?bool
+    {
+        return $this->archived;
+    }
+
+    public function setArchived(?bool $archived): self
+    {
+        $this->archived = $archived;
+
+        return $this;
+    }
+
     public function getUpdateAt(): ?\DateTimeInterface
     {
         return $this->update_at;
     }
 
-    public function setUpdateAt(\DateTimeInterface $update_at): self
+    public function setUpdateAt(?\DateTimeInterface $update_at): self
     {
         $this->update_at = $update_at;
 
         return $this;
     }
 
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    public function setImage(?string $image): self
+    public function setImage(?Image $image): self
     {
         $this->image = $image;
 
@@ -152,7 +172,6 @@ class Article
     {
         if (!$this->tags->contains($tag)) {
             $this->tags[] = $tag;
-            $tag->addArticle($this);
         }
 
         return $this;
@@ -162,7 +181,6 @@ class Article
     {
         if ($this->tags->contains($tag)) {
             $this->tags->removeElement($tag);
-            $tag->removeArticle($this);
         }
 
         return $this;
@@ -198,4 +216,10 @@ class Article
 
         return $this;
     }
+
+    public function getImage(): ?Image
+    {
+        return $this->image;
+    }
+
 }
