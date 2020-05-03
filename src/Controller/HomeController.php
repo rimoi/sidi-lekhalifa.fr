@@ -14,13 +14,8 @@ class HomeController extends BaseController
     /**
      * @Route("/home", name="home")
      */
-    public function index(Request $request, TranslatorInterface $translator)
+    public function index(Request $request)
     {
-//        $translator->setLocale('ar');
-//        $request->setLocale('ar');
-
-        return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
-        ]);
+        return $this->render('home/index.html.twig');
     }
 }

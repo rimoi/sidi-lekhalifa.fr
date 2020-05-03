@@ -41,6 +41,9 @@ form[name="change_password_form"] div ul > li {
     justify-content: space-between;
 }
 
+.img-height-265 {
+    height: 265px;
+}
 @media (max-width: 767px) {
     .navbar-nav .open .dropdown-menu {
         text-align: center;

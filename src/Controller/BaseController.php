@@ -16,12 +16,12 @@ class BaseController extends AbstractController
         $this->flashyNotifier = $flashyNotifier;
     }
 
-    public function flashSuccess(string $message): string
+    public function flashSuccess(string $message)
     {
         $this->flashyNotifier->success($message);
     }
 
-    public function flashError(string $message): string
+    public function flashError(string $message)
     {
         $this->flashyNotifier->error($message);
     }
