@@ -40,6 +40,9 @@ class User implements UserInterface, \Serializable
      */
     private $password;
 
+    /** @ORM\OneToOne(targetEntity="Image", cascade={"persist", "remove"}) */
+    private $image;
+
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
@@ -261,6 +264,18 @@ class User implements UserInterface, \Serializable
                 $comment->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getImage(): ?Image
+    {
+        return $this->image;
+    }
+
+    public function setImage(?Image $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }

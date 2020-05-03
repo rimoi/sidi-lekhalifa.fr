@@ -5,15 +5,16 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use App\Controller\BaseController;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("admin/article", name="article_")
  */
-class ArticleController extends AbstractController
+class ArticleController extends BaseController
 {
     /**
      * @Route("/", name="index", methods={"GET"})

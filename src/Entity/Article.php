@@ -29,7 +29,7 @@ class Article
     /**
      * @ORM\Column(type="boolean")
      */
-    private $archived;
+    private $archived = false;
 
     /**
      * @ORM\Column(type="datetime")
@@ -129,13 +129,6 @@ class Article
         return $this;
     }
 
-    public function setImage(?Image $image): self
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
     public function getContent(): ?string
     {
         return $this->content;
@@ -222,4 +215,10 @@ class Article
         return $this->image;
     }
 
+    public function setImage(?Image $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
 }

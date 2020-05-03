@@ -14,7 +14,7 @@ form[name="change_password_form"] div ul > li {
     list-style: none;
     color: red;
 }
-
+/******** Admin ************/
 .admin-show {
     display: flex;
     flex-direction: row-reverse;
@@ -25,9 +25,20 @@ form[name="change_password_form"] div ul > li {
     margin-top: 18px;
     margin-bottom: 21px;
 }
+.js-avatar {
+    border-radius: 50%;
+    width: 150px;
+}
 
-.admin-new {
-
+/******** Article ************/
+.js-image-article {
+    width: 262px;
+    height: 86px;
+}
+.head-article {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 @media (max-width: 767px) {

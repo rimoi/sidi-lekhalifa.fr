@@ -2,10 +2,11 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+use App\Controller\BaseController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class AboutController extends AbstractController
+class AboutController extends BaseController
 {
     /**
      * @Route("/about", name="about")

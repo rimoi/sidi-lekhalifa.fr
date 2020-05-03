@@ -1,84 +1,49 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello BlogController!{% endblock %}
+{% block title %}Blog{% endblock %}
+{% block description %}{{ 'home.description'|trans }}{% endblock %}
 
 {% block body %}
     <section id="blog" data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
         <div class="container">
             <div class="row">
-
                 <div class="col-md-12 col-sm-12">
                     <div class="section-title">
-                        <h2>Our Blog</h2>
+                        <h2></h2>
                         <span class="line-bar">...</span>
                     </div>
                 </div>
-
-                <div class="col-md-6 col-sm-6">
-                    <!-- BLOG THUMB -->
-                    <div class="media blog-thumb">
-                        <div class="media-object media-left">
-                            <a href="blog-detail.html">
-                                <img src="{{ asset('build/images/blog-image1.jpg') }}" class="img-responsive" alt="">
-                            </a>
-                        </div>
-                        <div class="media-body blog-info">
-                            <small><i class="fa fa-clock-o"></i> December 22, 2017</small>
-                            <h3><a href="blog-detail.html">How To Find Out Beautiful Workspace.</a></h3>
-                            <p>Lorem ipsum dolor sit consectetur adipiscing morbi venenatis.</p>
-                            <a href="blog-detail.html" class="btn section-btn">Read article</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-sm-6">
-                    <!-- BLOG THUMB -->
-                    <div class="media blog-thumb">
-                        <div class="media-object media-left">
-                            <a href="blog-detail.html">
-                                <img src="{{ asset('build/images/blog-image2.jpg') }}" class="img-responsive" alt="">
-                            </a>
-                        </div>
-                        <div class="media-body blog-info">
-                            <small><i class="fa fa-clock-o"></i> December 18, 2017</small>
-                            <h3><a href="blog-detail.html">woman sportwear.</a></h3>
-                            <p>Lorem ipsum dolor sit consectetur adipiscing morbi venenatis.</p>
-                            <a href="blog-detail.html" class="btn section-btn">Read more</a>
+                {% for article in articles %}
+                    <div class="col-md-6 col-sm-6">
+                        <!-- BLOG THUMB -->
+                        <div class="media blog-thumb">
+                            <div class="head-article">
+                                <div>&nbsp;</div>
+                                <div>
+                                    <a href="{{ path('blog_show', {slug: article.slug}) }}">
+                                        {% if article.image %}
+                                            <img class="img-responsive js-image-article" src="{{ vich_uploader_asset(article.image, 'imageFile') }}" alt="Avatar {{ article.title }}">
+                                        {% else %}
+                                            <img src="{{ asset('build/images/default-image.png') }}" class="img-responsive js-image-article" alt="Image par défaut">
+                                        {% endif %}
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="media-body blog-info">
+                                <small><i class="fa fa-clock-o"></i> {{ article.createdAt|date('d/m/Y H:m') }}</small>
+                                {% for tag in article.tags.toArray %}
+                                    <span class="label label-info label-tag">{{ tag.name }}</span>
+                                {% endfor %}
+                                <h3><a href="{{ path('blog_show', {slug: article.slug}) }}">{{ article.title }}</a></h3>
+                                <p>{{ article.content|u.truncate(200, '...')|raw }}</p>
+                                <div class="pull-right">
+                                    <a href="{{ path('blog_show', {slug: article.slug}) }}" class="btn section-btn">{{ 'article.read'|trans }}</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-md-6 col-sm-6">
-                    <!-- BLOG THUMB -->
-                    <div class="media blog-thumb">
-                        <div class="media-object media-left">
-                            <a href="blog-detail.html"><img src="{{ asset('build/images/blog-image3.jpg') }}" class="img-responsive" alt=""></a>
-                        </div>
-                        <div class="media-body blog-info">
-                            <small><i class="fa fa-clock-o"></i> December 14, 2017</small>
-                            <h3><a href="blog-detail.html">new creative fashion.</a></h3>
-                            <p>Lorem ipsum dolor sit consectetur adipiscing morbi venenatis.</p>
-                            <a href="blog-detail.html" class="btn section-btn">Read article</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-sm-6">
-                    <!-- BLOG THUMB -->
-                    <div class="media blog-thumb">
-                        <div class="media-object media-left">
-                            <a href="blog-detail.html"><img src="{{ asset('build/images/blog-image4.jpg') }}" class="img-responsive" alt=""></a>
-                        </div>
-                        <div class="media-body blog-info">
-                            <small><i class="fa fa-clock-o"></i> December 10, 2017</small>
-                            <h3><a href="blog-detail.html">minimalist design trend in 2018.</a></h3>
-                            <p>Lorem ipsum dolor sit consectetur adipiscing morbi venenatis.</p>
-                            <a href="blog-detail.html" class="btn section-btn">View Detail</a>
-                        </div>
-                    </div>
-                </div>
-
+                {% endfor %}
             </div>
         </div>
     </section>

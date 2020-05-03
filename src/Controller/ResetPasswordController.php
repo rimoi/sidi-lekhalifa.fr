@@ -7,12 +7,13 @@ use App\Form\ChangePasswordFormType;
 use App\Form\ResetPasswordRequestFormType;
 use App\Security\Login;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
+use App\Controller\BaseController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -23,7 +24,7 @@ use SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface;
 /**
  * @Route("/reset-password")
  */
-class ResetPasswordController extends AbstractController
+class ResetPasswordController extends BaseController
 {
     use ResetPasswordControllerTrait;
 

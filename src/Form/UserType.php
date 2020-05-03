@@ -26,6 +26,9 @@ class UserType extends AbstractType
                 'label' => 'Modération'
             ])
             ->add('pseudo', TextType::class)
+            ->add('image', ImageType::class, [
+                'required' => false
+            ])
         ;
     }
 

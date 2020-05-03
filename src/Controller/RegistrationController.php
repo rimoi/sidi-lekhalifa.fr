@@ -6,10 +6,11 @@ use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Security\Login;
 use MercurySeries\FlashyBundle\FlashyNotifier;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use App\Controller\BaseController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\UsageTrackingTokenStorage;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
@@ -17,7 +18,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 use Symfony\Component\Security\Http\SecurityEvents;
 
-class RegistrationController extends AbstractController
+class RegistrationController extends BaseController
 {
     /**
      * @Route("/register", name="app_register")

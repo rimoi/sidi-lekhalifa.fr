@@ -40,7 +40,9 @@ class ArticleType extends AbstractType
                     'placeholder' => 'Choisir un tag ...',
                 ]
             ])
-            ->add('image', ImageType::class)
+            ->add('image', ImageType::class, [
+                'required' => false
+            ])
         ;
     }
 

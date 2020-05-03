@@ -4,11 +4,12 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
 use Symfony\Component\HttpFoundation\Request;
+use App\Controller\BaseController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ConnectionController extends AbstractController
+class ConnectionController extends BaseController
 {
     /**
      * @Route("/connection", name="connection")

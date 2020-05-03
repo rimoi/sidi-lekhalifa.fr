@@ -13,8 +13,7 @@
             <tr>
                 <th>Id</th>
                 <th>Title</th>
-                <th>Image</th>
-                <th>Content</th>
+                <th>crée</th>
                 <th colspan="2">actions</th>
                 <th>Supprimé</th>
             </tr>
@@ -23,13 +22,8 @@
             {% for article in articles %}
                 <tr>
                     <td>{{ article.id }}</td>
+                    <td>{{ article.createdAt|date('d/m/Y H:m') }}</td>
                     <td>{{ article.title }}</td>
-                    <td>
-                        {% if article.image %}
-                            <img src="{{ vich_uploader_asset(article.image, 'imageFile') }}" alt="" height="30" width="30">
-                        {% endif %}
-                    </td>
-                    <td>{{ article.content|raw }}</td>
                     <td>
                         <a href="{{ path('article_show', {'id': article.id}) }}">show</a>
                     </td>

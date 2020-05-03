@@ -48,6 +48,14 @@
                 <th>Pseudo</th>
                 <td>{{ user.pseudo }}</td>
             </tr>
+            <tr>
+                <th>Image</th>
+                <td>
+                    {% if user.image %}
+                        <img class="js-avatar" src="{{ vich_uploader_asset(user.image, 'imageFile') }}" alt="Avatar {{ user.pseudo }}" />
+                    {% endif %}
+                </td>
+            </tr>
         </tbody>
     </table>
 

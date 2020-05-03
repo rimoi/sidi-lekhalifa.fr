@@ -551,7 +551,10 @@ http://www.templatemo.com/tm-509-hydro
   }
 
   .blog-info {
-    padding: 75px 25px;
+    padding: 12px 25px;
+  }
+  span.label.label-info.label-tag {
+    background: #4E9CE2;
   }
 
   .blog-info h3 {
@@ -566,6 +569,15 @@ http://www.templatemo.com/tm-509-hydro
     margin-top: 20px;
   }
 
+  #user-footer {
+      display: flex;
+  }
+  #user-footer .name {
+      align-self: center;
+  }
+  #user-footer .name .pseudo {
+    color: #4e9ce2;
+  }
   .blog-info .section-btn:hover {
     background: #00F260;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #0575E6, #00F260);  /* Chrome 10-25, Safari 5.1-6 */

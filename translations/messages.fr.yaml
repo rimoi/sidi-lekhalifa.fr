@@ -43,4 +43,7 @@ home:
     hi: Bonjour
     cheers: Cordialement
   back_home: Retourner à l'accueil
+  description:  Tout sur les astuces de PHP/Symfony, Javacsript, Twig, ..., pour faciliter notre développement et/ou retour d'expérience sur certaines fonctionnalités.
+article:
+  read: Lire
 

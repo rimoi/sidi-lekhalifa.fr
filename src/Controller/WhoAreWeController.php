@@ -2,10 +2,11 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+use App\Controller\BaseController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class WhoAreWeController extends AbstractController
+class WhoAreWeController extends BaseController
 {
     /**
      * @Route("/who/are/we", name="who_are_we")
