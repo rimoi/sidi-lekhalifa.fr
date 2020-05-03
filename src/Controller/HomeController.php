@@ -2,20 +2,19 @@
 
 namespace App\Controller;
 
-use MercurySeries\FlashyBundle\FlashyNotifier;
-
-use Symfony\Component\HttpFoundation\Request;
+use App\Entity\Page;
 use App\Controller\BaseController;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Contracts\Translation\TranslatorInterface;
 
 class HomeController extends BaseController
 {
     /**
      * @Route("/home", name="home")
      */
-    public function index(Request $request)
+    public function index()
     {
-        return $this->render('home/index.html.twig');
+        $pages = $this->getDoctrine()->getRepository(Page::class)->findBy(['archived' => false]);
+
+        return $this->render('home/index.html.twig', compact('pages'));
     }
 }

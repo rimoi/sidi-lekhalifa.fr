@@ -2,63 +2,42 @@
     <div class="container">
         <div class="row">
 
-            <div class="col-md-5 col-sm-12">
+            <div class="col-md-4 col-sm-12 col-md-offset-3">
                 <div class="footer-thumb footer-info">
-                    <h2>Sidi</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <h2>Rimoi</h2>
+                    <p>Développeur des sites web.</p>
                 </div>
             </div>
 
-            <div class="col-md-2 col-sm-4">
+            <div class="col-md-4 col-sm-4">
                 <div class="footer-thumb">
-                    <h2>Company</h2>
+                    <h2></h2>
                     <ul class="footer-link">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Join our team</a></li>
-                        <li><a href="#">Read Blog</a></li>
-                        <li><a href="#">Press</a></li>
+                        <li {% if 'about' starts with app.request.attributes.get('_route') %} class="active" {% endif %}><a href="{{ path('about') }}" class="smoothScroll">{{ 'home.nav.about'|trans }}</a></li>
+                        <li {% if 'blog_index' starts with app.request.attributes.get('_route') %} class="active" {% endif %}><a href="{{ path('blog_index') }}" class="smoothScroll">{{ 'home.nav.blog'|trans }}</a></li>
+                        <li {% if 'who_are_we' starts with app.request.attributes.get('_route') %} class="active" {% endif %}><a href="{{ path('who_are_we') }}" class="smoothScroll">{{ 'home.nav.us-work'|trans }}</a></li>
+                        <li {% if 'contact' starts with app.request.attributes.get('_route') %} class="active" {% endif %}><a href="{{ path('contact') }}" class="smoothScroll">{{ 'home.nav.contact'|trans }}</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="col-md-2 col-sm-4">
-                <div class="footer-thumb">
-                    <h2>Services</h2>
-                    <ul class="footer-link">
-                        <li><a href="#">Pricing</a></li>
-                        <li><a href="#">Documentation</a></li>
-                        <li><a href="#">Support</a></li>
-                    </ul>
-                </div>
-            </div>
 
-            <div class="col-md-3 col-sm-4">
-                <div class="footer-thumb">
-                    <h2>Find us</h2>
-                    <p>123 Grand Rama IX, <br> Krung Thep Maha Nakhon 10400</p>
-                </div>
-            </div>
-
+        </div>
+        <div class="row">
             <div class="col-md-12 col-sm-12">
-                <div class="footer-bottom">
-                    <div class="col-md-6 col-sm-5">
+                <div class="footer-bottom text-center">
+                    <div>
                         <div class="copyright-text">
-                            <p>Copyright &copy; 2017 Your Company</p>
+                            <p>Copyright &copy; {{ 'now'|date('Y') }} Rimoi</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-7">
                         <div class="phone-contact">
-                            <p>Call us <span>(+66) 010-020-0340</span></p>
+                            <p></span></p>
                         </div>
-                        <ul class="social-icon">
-                            <li><a href="https://www.facebook.com/templatemo" class="fa fa-facebook-square" attr="facebook icon"></a></li>
-                            <li><a href="#" class="fa fa-twitter"></a></li>
-                            <li><a href="#" class="fa fa-instagram"></a></li>
-                        </ul>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </footer>

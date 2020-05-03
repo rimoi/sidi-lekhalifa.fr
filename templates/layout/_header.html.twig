@@ -19,11 +19,11 @@
             <!-- MENU LINKS -->
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-nav-first" {% if app.request.locale == 'ar' %} style="display: flex; flex-direction: row-reverse"{% endif %}>
-                    <li><a href="{{ path('home') }}" class="smoothScroll">{{ 'home.nav.home'|trans }}</a></li>
-                    <li><a href="{{ path('about') }}" class="smoothScroll">{{ 'home.nav.about'|trans }}</a></li>
-                    <li><a href="{{ path('blog_index') }}" class="smoothScroll">{{ 'home.nav.blog'|trans }}</a></li>
-                    <li><a href="{{ path('who_are_we') }}" class="smoothScroll">{{ 'home.nav.us-work'|trans }}</a></li>
-                    <li><a href="{{ path('contact') }}" class="smoothScroll">{{ 'home.nav.contact'|trans }}</a></li>
+                    <li {% if 'home' starts with app.request.attributes.get('_route') %} class="active" {% endif %}><a href="{{ path('home') }}" class="smoothScroll">{{ 'home.nav.home'|trans }}</a></li>
+                    <li {% if 'about' starts with app.request.attributes.get('_route') %} class="active" {% endif %}><a href="{{ path('about') }}" class="smoothScroll">{{ 'home.nav.about'|trans }}</a></li>
+                    <li {% if 'blog_index' starts with app.request.attributes.get('_route') %} class="active" {% endif %}><a href="{{ path('blog_index') }}" class="smoothScroll">{{ 'home.nav.blog'|trans }}</a></li>
+                    <li {% if 'who_are_we' starts with app.request.attributes.get('_route') %} class="active" {% endif %}><a href="{{ path('who_are_we') }}" class="smoothScroll">{{ 'home.nav.us-work'|trans }}</a></li>
+                    <li {% if 'contact' starts with app.request.attributes.get('_route') %} class="active" {% endif %}><a href="{{ path('contact') }}" class="smoothScroll">{{ 'home.nav.contact'|trans }}</a></li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">

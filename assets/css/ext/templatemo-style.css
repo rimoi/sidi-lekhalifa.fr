@@ -731,6 +731,10 @@ http://www.templatemo.com/tm-509-hydro
     color: #d9d9d9;
   }
 
+.footer-link li:hover,   .footer-link li:active {
+  color: red;
+}
+
   .copyright-text p,
   .footer-bottom .phone-contact p {
     font-size: 14px;
