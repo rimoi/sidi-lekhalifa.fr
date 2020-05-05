@@ -1,3 +1,11 @@
+# si on a des probleme de compatibilité :
+ yarn install --ignore-engines
+# not execute php
+manque php-fpm
+
+ecriture Url il faut le changer dans /etc/apache2/sites-available/000-default.conf
+
+# .htaccess
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteCond %{REQUEST_FILENAME} !-f
@@ -10,3 +18,4 @@
         RedirectMatch 302 ^/$ /index.php/fr/
     </IfModule>
 </IfModule>
+

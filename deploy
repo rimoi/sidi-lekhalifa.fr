@@ -1,0 +1,2 @@
+#!/bin/sh
+rsync -av -e * "ssh -i ~/.ssh/rimoi.pem" ubuntu@3.14.131.132:/var/www/html/ --include=vendor --exclude-from=.gitignore --exclude=".*"
