@@ -25,4 +25,15 @@ class BaseController extends AbstractController
     {
         $this->flashyNotifier->error($message);
     }
+
+    protected function getErrors($form)
+    {
+        $errors = [];
+
+        foreach ($form->getErrors(true) as $error) {
+            $errors[] = $error->getMessage();
+        }
+
+        return $errors;
+    }
 }

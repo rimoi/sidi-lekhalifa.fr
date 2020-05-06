@@ -44,6 +44,9 @@ class ContactController extends BaseController
             return $this->redirectToRoute('contact');
         }
 
-        return $this->render('contact/index.html.twig', ['form' => $form->createView()]);
+        return $this->render('contact/index.html.twig', [
+            'form' => $form->createView(),
+            'error_registration' =>$this->getErrors($form),
+        ]);
     }
 }

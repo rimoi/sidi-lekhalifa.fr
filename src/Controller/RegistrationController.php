@@ -59,15 +59,4 @@ class RegistrationController extends BaseController
             'error_registration' =>$this->getErrors($form),
         ]);
     }
-
-    private function getErrors($form)
-    {
-        $errors = [];
-
-        foreach ($form->getErrors(true) as $error) {
-            $errors[] = $error->getMessage();
-        }
-
-        return $errors;
-    }
 }
