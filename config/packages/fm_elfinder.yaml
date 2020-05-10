@@ -9,6 +9,6 @@ fm_elfinder:
                 roots:
                     uploads:
                         driver: LocalFileSystem
-                        path: uploads/images/articles/ckeditor
+                        path: /public/uploads/images/articles/ckeditor
                         upload_allow: ['image/png', 'image/jpg', 'image/jpeg'] # Fichiers autorisés
                         upload_deny: ['all']

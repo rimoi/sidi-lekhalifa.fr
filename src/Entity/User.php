@@ -80,6 +80,15 @@ class User implements UserInterface, \Serializable
         $this->comments = new ArrayCollection();
     }
 
+    public function isAdmin(): bool
+    {
+        if (in_array('ROLE_ADMIN', $this->getRoles())) {
+            return true;
+        }
+
+        return false;
+    }
+
     public function nickname(): string
     {
         if (!$this->firstName && !$this->lastName) {

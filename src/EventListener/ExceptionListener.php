@@ -34,7 +34,7 @@ class ExceptionListener
                 $exception->getLine(),
                 $exception->getFile()
             );
-            $this->sendEmail($message);
+           // $this->sendEmail($message);
         }
     }
 

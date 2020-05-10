@@ -50,7 +50,11 @@
 
                                                     <input type="email" class="form-control" name="_username" placeholder="{{ 'home.connection.signup.email'|trans }}" required>
                                                     <input type="password" class="form-control" name="_password" placeholder="{{ 'home.connection.signup.password'|trans }}" required>
-
+                                                    <div class="checkbox">
+                                                        <label style="color: #fff;">
+                                                            <input type="checkbox" name="_remember_me"> Se souvenir de moi
+                                                        </label>
+                                                    </div>
                                                     <input type="hidden" name="_csrf_token"
                                                            value="{{ csrf_token('authenticate') }}"
                                                     >

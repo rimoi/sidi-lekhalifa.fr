@@ -65,6 +65,11 @@ class Article
      */
     private $comments;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Visit", mappedBy="article", orphanRemoval=true)
+     */
+    private $visits;
+
     public function __toString(): string
     {
         return $this->title;
@@ -74,6 +79,7 @@ class Article
     {
         $this->tags = new ArrayCollection();
         $this->comments = new ArrayCollection();
+        $this->visits = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -218,6 +224,37 @@ class Article
     public function setImage(?Image $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Visit[]
+     */
+    public function getVisits(): Collection
+    {
+        return $this->visits;
+    }
+
+    public function addVisit(Visit $visit): self
+    {
+        if (!$this->visits->contains($visit)) {
+            $this->visits[] = $visit;
+            $visit->setArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVisit(Visit $visit): self
+    {
+        if ($this->visits->contains($visit)) {
+            $this->visits->removeElement($visit);
+            // set the owning side to null (unless already changed)
+            if ($visit->getArticle() === $this) {
+                $visit->setArticle(null);
+            }
+        }
 
         return $this;
     }
