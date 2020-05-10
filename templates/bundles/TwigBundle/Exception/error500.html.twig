@@ -1,0 +1,17 @@
+{% extends 'connection/login.html.twig' %}
+
+{% block title %}Je suis désolé pour cette erreur. <br>
+    Je ferai le nécessaire le plutôt possible ! {% endblock %}
+{% block _show_message %}{{ block('title') }}{% endblock %}
+{% block meta_robots %}
+    <meta name="robots" content="noindex"/>
+{% endblock %}
+{% block _create_or_ligin %}
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade in active" id="sign_up">
+            <a class="btn btn-success" href="{{ path('home') }}">{{ 'home.nav.home'|trans }}</a>
+        </div>
+    </div>
+{% endblock %}
+
+

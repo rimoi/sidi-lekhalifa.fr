@@ -36,3 +36,7 @@ services:
     app.login_success_handler:
         autowire: true
         class: App\Security\LoginSuccessHandler
+
+    App\EventListener\ExceptionListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception }
