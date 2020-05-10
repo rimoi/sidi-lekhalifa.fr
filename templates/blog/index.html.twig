@@ -34,7 +34,7 @@
                                     <span class="label label-info label-tag">{{ tag.name }}</span>
                                 {% endfor %}
                                 <h3><a href="{{ path('blog_show', {slug: article.slug}) }}">{{ article.title }}</a></h3>
-                                <p>{{ article.content|u.truncate(200, '...')|raw }}</p>
+                                <p>{{ article.content|u.truncate(150, '...')|raw }}</p>
                                 <div class="pull-right">
                                     <a href="{{ path('blog_show', {slug: article.slug}) }}" class="btn section-btn">{{ 'article.read'|trans }}</a>
                                 </div>
