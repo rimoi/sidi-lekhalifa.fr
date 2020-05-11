@@ -18,7 +18,7 @@ class BlogController extends BaseController
      */
     public function index(ArticleRepository $articleRepository)
     {
-        $articles =  $articleRepository->findBy(['archived' => false]);
+        $articles =  $articleRepository->findBy(['archived' => false], ['id' => 'desc']);
 
         return $this->render('blog/index.html.twig', compact('articles'));
     }

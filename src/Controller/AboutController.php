@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AboutController extends BaseController
 {
     /**
-     * @Route("/about", name="about")
+     * @Route("/about", name="about", options={"sitemap" = true})
      */
     public function index()
     {
