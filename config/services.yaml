@@ -7,7 +7,8 @@ parameters:
     app.upload.article: /uploads/images/articles
     app.email.from: 'sidilekhalifa1@gmail.com'
     app.email.to: 'sidi.khalifa@live.fr'
-
+    router.request_context.host:   sidi-lekhalifa.fr
+    router.request_context.scheme: http
 services:
     # default configuration for services in *this* file
     _defaults:

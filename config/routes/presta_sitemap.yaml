@@ -2,4 +2,4 @@ presta_sitemap:
   resource: '@PrestaSitemapBundle/Resources/config/routing.yml'
   prefix: /{_locale}
   requirements:
-    _locale: 'fr'
+    _locale: fr
