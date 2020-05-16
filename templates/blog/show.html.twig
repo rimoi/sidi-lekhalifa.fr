@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}{{ article.title }}{% endblock %}
-{% block description %}{{ article.content|u.truncate(200, '...')|raw }}{% endblock %}
+{% block description %}{{ article.content|u.truncate(100, '...')|raw }}{% endblock %}
 
 {% block body %}
     <!-- BLOG HEADER -->
